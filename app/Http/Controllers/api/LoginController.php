@@ -31,4 +31,14 @@ class LoginController extends Controller
             return abort(403);
         }
     }
+
+    public function verify()
+    {
+        try {
+            Auth::check('sanctum');
+            return response()->json(['data' => 'Token Verified'], 200);
+        } catch (\Exception $e) {
+            $e->getMessage();
+        }
+    }
 }

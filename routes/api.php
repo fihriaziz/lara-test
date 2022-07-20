@@ -7,7 +7,7 @@ use App\Http\Controllers\api\ProfileController;
 use App\Http\Controllers\api\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->group(function(){
+Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/user', [ProfileController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index']);
     Route::post('/goal', [GoalController::class, 'goal']);
@@ -15,6 +15,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/task', [TaskController::class, 'task']);
 
     Route::get('/up-comming', [GoalController::class, 'upcommingGoal']);
+
+    Route::post('/verify', [LoginController::class, 'verify']);
 
 });
 
